@@ -1,26 +1,30 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "blog")
 public class Blog {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int Id;
+
+    @Column(name="title")
     private String title;
+
+    @Column(name="content")
     private String content;
 
     public Blog() {
     }
 
-    public Blog(int id, String title, String content) {
-        this.id = id;
+    public Blog(String title, String content) {
+
         this.title = title;
         this.content = content;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
@@ -40,9 +44,7 @@ public class Blog {
 
     @Override
     public String toString() {
-        return "Blog{" +
-                "id:" + id +
-                ", title:'" + title + '\'' +
+        return "Blog{"+ ", title:'" + title + '\'' +
                 ", content:'" + content + '\'' +
                 '}';
     }
